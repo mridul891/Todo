@@ -1,9 +1,10 @@
 const express = require('express');
 const { createTodo, updateTodo } = require('./types');
 const { todo } = require('./db');
-
+const cors = require('cors')
 const app = express();
 const port = 3000;
+app.use(cors());
 app.use(express.json());
 
 // For adding the todo in the database
@@ -40,7 +41,7 @@ app.post('/todo', async (req, res) => {
 app.get('/todos', async (req, res) => {
     //  returns all the todo 
     const todos = await todo.find();
-    res.json(todos )//it always return the promise therefore we require an async await
+    res.json({todos})//it always return the promise therefore we require an async await
 })
 
 
