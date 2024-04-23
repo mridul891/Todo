@@ -40,7 +40,7 @@ app.post('/todo', async (req, res) => {
 app.get('/todos', async (req, res) => {
     //  returns all the todo 
     const todos = await todo.find();
-    console.log(todos); //it always return the promise therefore we require an async await
+    res.json(todos )//it always return the promise therefore we require an async await
 })
 
 
